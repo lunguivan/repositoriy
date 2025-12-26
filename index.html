@@ -647,6 +647,26 @@
                 document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
+    // Подсветка текущего дня в расписании
+        const days = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        const today = new Date().getDay();
+        
+        // Воскресенье (0) в нашем расписании нет занятий, поэтому пропускаем
+        if (today > 0 && today < 7) {
+            const table = document.querySelector('table');
+            const rows = table.querySelectorAll('tr');
+            
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                if (cells.length > today) {
+                    cells[today].classList.add('highlight');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
 
 
 
